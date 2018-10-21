@@ -1,78 +1,46 @@
 <html lang="es">
-<head>
-	<link rel="stylesheet" type="text/css" href="estilo.css"/>
-	<link href="jqueryuicss.css" rel="stylesheet" type="text/css" >
-
-</head>
-<body>
-
-<title>Puzzle de ordenamiento</title>
-<link href="bootstrap.css" rel="stylesheet" type="text/css" >
-<script src="jquery172.js"></script>
-<script src="jqueryui.js"></script>
-<script src="jqueryuitouchpunch.js"></script>
-<script src="jquerymjsnestedsortable.js"></script>
-
-
-
-
-<div class="col-xs-12">
-	<div class="row">
-		<div class="col-xs-9">
-			<h4>Puzzle #X: Recorrido de listas</h4>
-			<div class="menu-box">
-				<ul class="menu-list sortable ui-sortable" id="puzzle">
-					<li id="setName_0" style="display: list-item;" >
-						<a href="javascript:void(0)" >print (cada_item)</a>
-					</li>
-					<li id="setName_1" >
-						<a href="javascript:void(0)">for cada_item in la_lista:</a>
-					</li>
-					<li id="setName_2" >
-						<a href="javascript:void(0)" >print_lista(cada_item)</a>
-					</li>
-					<li  id="setName_3" >
-						<a href="javascript:void(0)">lista=[1,[2,3,4],5]</a>
-					</li>
-					<li id="setName_4" >
-						<a href="javascript:void(0)">def print_lista(la_lista):</a>
-					</li>
-					<li  id="setName_5" >
-						<a href="javascript:void(0)" >else:</a>
-					</li>
-					<li  id="setName_6">
-						<a href="javascript:void(0)" >if isinstance(cada_item, list):</a>
-					</li>
-
-					<li id="setName_7">
-						<a href="javascript:void(0)">print_lista(lista)</a>
-					</li>
-
-				</ul>
+	<head>
+		<link rel="stylesheet" type="text/css" href="estilo.css"/>
+		<link href="jqueryuicss.css" rel="stylesheet" type="text/css" >
+	</head>
+	<body>
+		<title>Puzzle de ordenamiento</title>
+		<link href="bootstrap.css" rel="stylesheet" type="text/css" >
+		<script src="jquery172.js"></script>
+		<script src="jqueryui.js"></script>
+		<script src="jqueryuitouchpunch.js"></script>
+		<script src="jquerymjsnestedsortable.js"></script>
+		<div class="col-xs-12">
+			<div class="row">
+				<div class="col-xs-9">
+					<h4 id="titulo"></h4>
+					<div class="menu-box">
+						<ul class="menu-list sortable ui-sortable" id="puzzle">
+						</ul>
+					</div>
+				</div>
+				<div class="col-xs-3">
+					<h4>Salida:</h4>
+					<div id="salida">
+					</div>
+					<button id="serialize" class="btn btn-success form-control">He terminado</button>
+				</div>
+			</div>
+			<div class="row">
+				<pre id="toArrayOutput"></pre>
 			</div>
 		</div>
-		<div class="col-xs-3">
-			<h4>Salida:</h4>
-			<p>1</p>
-			<p>2</p>
-			<p>3</p>
-			<p>4</p>
-			<p>5</p>
-			<button id="serialize" class="btn btn-success form-control">He terminado</button>
-		</div>
-	</div>
-	<pre id="toArrayOutput">
-		</pre>
-
-</div>
-
-
-
-<script>
+		<script>
 	var puzzle;
     $(document).ready(function ()
     {
-
+		$("#titulo").html(Android.getTitulo());
+		$("#salida").html(Android.getSalida());
+		var jsonLista=JSON.parse((Android.getPuzzle()));
+		for (item in jsonLista)
+		{
+			document.getElementById("puzzle").innerHTML += "<li id='"+item+"'> <a href='javascript:void(0)'> "+jsonLista[item]+"</a> </li>";
+		}
         puzzle= $('#puzzle').nestedSortable(
             {
                 forcePlaceholderSize: true,
@@ -134,5 +102,5 @@
         return dumped_text;
     }
 </script>
-</body>
+	</body>
 </html>
