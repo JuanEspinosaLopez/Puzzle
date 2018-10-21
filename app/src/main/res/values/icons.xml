@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fa_tema">&#xf15c;</string>
+    <string name="fa_articulo">&#xf5da;</string>
+    <string name="fa_instruccion">&#xf121;</string>
+    <string name="fa_puzzle_ordenamiento">&#xf0dc;</string>
+    <string name="fa_puzzle_sintaxis">&#xf00d;</string>
+    <string name="fa_puzzle_uml">&#xf542;</string>
+</resources>

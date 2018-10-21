@@ -1,7 +1,13 @@
 <resources>
-    <string name="app_name">PyPlay</string>
+    <string name="app_name">Plaython!</string>
 
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="Jugar">Jugar!</string>
+    <string name="temas">Temas</string>
+    <string name="articulos">Articulos</string>
+    <string name="instrucciones">Instrucciones</string>
+    <string name="puzzleOrdenamiento">Puzzles de ordenamiento</string>
+    <string name="puzzleSintaxis">Puzzles de sintaxis</string>
+    <string name="puzzleUML">Puzzles de UML</string>
 </resources>

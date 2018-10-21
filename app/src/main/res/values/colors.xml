@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#5092BF</color>
+    <color name="colorPrimaryDark">#35617F</color>
+    <color name="colorAccent">#FF9779</color>
 
     <color name="black_overlay">#66000000</color>
     <color name="fondoInicioSesion">#FFFFFF</color>
+
+    <color name="triada1">#FFE65D</color>
+    <color name="triada2">#6AC3FF</color>
+    <color name="triada3">#FF9779</color>
+    <color name="triada4">#55E864</color>
+    <color name="triada5">#B855E8</color>
+
+
+
 </resources>
