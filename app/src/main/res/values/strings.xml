@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Plaython!</string>
-
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="Jugar">Jugar!</string>
@@ -10,4 +9,8 @@
     <string name="puzzleOrdenamiento">Puzzles de ordenamiento</string>
     <string name="puzzleSintaxis">Puzzles de sintaxis</string>
     <string name="puzzleUML">Puzzles de UML</string>
+    <string name="reportes">Reportes</string>
+    <string name="graficas">Graficas</string>
+    <string name="alta_tema_titulo">Ingrese el contenido del tema</string>
+    <string name="alta_tema_registrar_tema">Registrar tema</string>
 </resources>

@@ -6,4 +6,6 @@
     <string name="fa_puzzle_ordenamiento">&#xf0dc;</string>
     <string name="fa_puzzle_sintaxis">&#xf00d;</string>
     <string name="fa_puzzle_uml">&#xf542;</string>
+    <string name="fa_graficas">&#xf543;</string>
+    <string name="fa_reportes">&#xf544;</string>
 </resources>

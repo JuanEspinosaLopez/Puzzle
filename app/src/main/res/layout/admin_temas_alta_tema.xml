@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/dialogo_redondeado"
+    android:padding="10dp"
+
+    tools:context=".Admin.Temas.AltaTema">
+
+    <TextView
+        android:background="@drawable/rectangulo_redondeado"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:text="@string/alta_tema_titulo"
+        android:textSize="20sp"
+        android:textColor="@color/triada2"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_marginVertical="5dp"
+        android:layout_height="wrap_content" />
+    <MultiAutoCompleteTextView
+        android:hint="@string/alta_tema_titulo"
+        android:id="@+id/multiAutoCompleteTextView"
+        android:background="@drawable/rectangulo_redondeado"
+        android:layout_width="match_parent"
+        android:layout_weight="10"
+        android:padding="10dp"
+        android:textStyle="bold"
+        android:layout_marginVertical="5dp"
+        android:layout_height="wrap_content" />
+    <Button
+        android:layout_weight="1"
+        android:background="@drawable/rectangulo_redondeado"
+        android:textColor="@color/triada2"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_marginVertical="5dp"
+        android:text="@string/alta_tema_registrar_tema"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

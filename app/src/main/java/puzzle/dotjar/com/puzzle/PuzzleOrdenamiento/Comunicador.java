@@ -31,6 +31,9 @@ public class Comunicador
         try
         {
             jsonObject.put("setName_"+0, "print (cada_item)");
+            jsonObject.put("setName_"+1, "print (cada_item2)");
+            jsonObject.put("setName_"+2, "print (cada_item3)");
+            jsonObject.put("setName_"+3, "print (cada_item4)");
         }
         catch (JSONException e)
         {

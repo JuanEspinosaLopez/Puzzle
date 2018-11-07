@@ -9,8 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PuzzleOrdenamiento.PuzzleOrdenamiento"></activity>
+        <activity android:name=".PuzzleOrdenamiento.PuzzleOrdenamiento" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".Login" />
+
         <activity android:name=".Admin.AdminDashboard">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,6 +26,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Admin.Temas.Temas" />
+        <activity android:name=".Admin.Temas.AltaTema"></activity>
     </application>
 
 </manifest>

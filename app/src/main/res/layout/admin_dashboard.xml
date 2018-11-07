@@ -9,209 +9,285 @@
     android:gravity="center"
     android:background="@color/triada1"
     tools:context=".Admin.AdminDashboard">
-
-    <TableLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:id="@+id/admin_table_layout"
-        android:orientation="vertical"
         android:layout_height="match_parent">
-        <TableRow android:layout_weight="1">
-            <android.support.v7.widget.CardView
-                android:id="@+id/admin_temas"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                app:cardBackgroundColor="@color/cardview_light_background"
-                app:cardCornerRadius="10dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-                    <TextView
-                        android:padding="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/fa_tema"
-                        android:textColor="@color/triada2"
-                        android:textSize="60sp" />
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/temas"
-                        android:textColor="@color/triada3"
-                        android:textSize="25sp" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-            <android.support.v7.widget.CardView
-                android:id="@+id/admin_articulos"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                app:cardBackgroundColor="@color/cardview_light_background"
-                app:cardCornerRadius="10dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TableLayout
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:id="@+id/admin_table_layout"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+                <TableRow android:layout_weight="1">
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/admin_temas"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_margin="5dp"
+                        app:cardBackgroundColor="@color/cardview_light_background"
+                        app:cardCornerRadius="10dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            <TextView
+                                android:padding="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/fa_tema"
+                                android:textColor="@color/triada2"
+                                android:textSize="60sp" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/temas"
+                                android:textColor="@color/triada3"
+                                android:textSize="25sp" />
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
 
-                    <TextView
-                        android:padding="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/fa_articulo"
-                        android:textColor="@color/triada2"
-                        android:textSize="60sp" />
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/admin_articulos"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="@color/cardview_light_background"
+                        app:cardCornerRadius="10dp">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/articulos"
-                        android:textColor="@color/triada3"
-                        android:textSize="25sp" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-        </TableRow>
-        <TableRow android:layout_weight="1">
-            <android.support.v7.widget.CardView
-                android:id="@+id/admin_instrucciones"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:cardBackgroundColor="@color/cardview_light_background"
-                app:cardCornerRadius="10dp"
-                android:layout_margin="5dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-                    <TextView
-                        android:padding="10dp"
-                        android:textColor="@color/triada2"
-                        android:textSize="60sp"
-                        android:gravity="center"
-                        android:text="@string/fa_instruccion"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:textColor="@color/triada3"
-                        android:textSize="25sp"
-                        android:gravity="center"
-                        android:text="@string/instrucciones"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-            <android.support.v7.widget.CardView
-                android:id="@+id/admin_po"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:cardBackgroundColor="@color/cardview_light_background"
-                app:cardCornerRadius="10dp"
-                android:layout_margin="5dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:layout_margin="5dp"
-                    android:orientation="vertical">
-                    <TextView
-                        android:padding="10dp"
-                        android:textColor="@color/triada2"
-                        android:textSize="60sp"
-                        android:gravity="center"
-                        android:text="@string/fa_puzzle_ordenamiento"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:textColor="@color/triada3"
-                        android:textSize="25sp"
-                        android:gravity="center"
-                        android:text="@string/puzzleOrdenamiento"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-        </TableRow>
-        <TableRow android:layout_weight="1">
-            <android.support.v7.widget.CardView
-                android:id="@+id/admin_ps"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:cardBackgroundColor="@color/cardview_light_background"
-                app:cardCornerRadius="10dp"
-                android:layout_margin="5dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:layout_margin="5dp"
-                    android:orientation="vertical">
-                    <TextView
-                        android:padding="10dp"
-                        android:textColor="@color/triada2"
-                        android:textSize="60sp"
-                        android:gravity="center"
-                        android:text="@string/fa_puzzle_sintaxis"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:textColor="@color/triada3"
-                        android:textSize="25sp"
-                        android:gravity="center"
-                        android:text="@string/puzzleSintaxis"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-            <android.support.v7.widget.CardView
-                android:id="@+id/admin_puml"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:cardBackgroundColor="@color/cardview_light_background"
-                app:cardCornerRadius="10dp"
-                android:layout_margin="5dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:layout_margin="5dp"
-                    android:orientation="vertical">
-                    <TextView
-                        android:padding="10dp"
-                        android:textColor="@color/triada2"
-                        android:textSize="60sp"
-                        android:gravity="center"
-                        android:text="@string/fa_puzzle_uml"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:textColor="@color/triada3"
-                        android:textSize="25sp"
-                        android:gravity="center"
-                        android:text="@string/puzzleUML"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-        </TableRow>
-    </TableLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
 
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="@string/fa_articulo"
+                                android:textColor="@color/triada2"
+                                android:textSize="60sp" />
 
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/articulos"
+                                android:textColor="@color/triada3"
+                                android:textSize="25sp" />
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+                </TableRow>
+                <TableRow android:layout_weight="1">
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/admin_instrucciones"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="@color/cardview_light_background"
+                        app:cardCornerRadius="10dp"
+                        android:layout_margin="5dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            <TextView
+                                android:padding="10dp"
+                                android:textColor="@color/triada2"
+                                android:textSize="60sp"
+                                android:gravity="center"
+                                android:text="@string/fa_instruccion"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:textColor="@color/triada3"
+                                android:textSize="25sp"
+                                android:gravity="center"
+                                android:text="@string/instrucciones"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/admin_po"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="@color/cardview_light_background"
+                        app:cardCornerRadius="10dp"
+                        android:layout_margin="5dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_margin="5dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:padding="10dp"
+                                android:textColor="@color/triada2"
+                                android:textSize="60sp"
+                                android:gravity="center"
+                                android:text="@string/fa_puzzle_ordenamiento"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:textColor="@color/triada3"
+                                android:textSize="25sp"
+                                android:gravity="center"
+                                android:text="@string/puzzleOrdenamiento"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+                </TableRow>
+                <TableRow android:layout_weight="1">
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/admin_ps"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="@color/cardview_light_background"
+                        app:cardCornerRadius="10dp"
+                        android:layout_margin="5dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_margin="5dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:padding="10dp"
+                                android:textColor="@color/triada2"
+                                android:textSize="60sp"
+                                android:gravity="center"
+                                android:text="@string/fa_puzzle_sintaxis"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:textColor="@color/triada3"
+                                android:textSize="25sp"
+                                android:gravity="center"
+                                android:text="@string/puzzleSintaxis"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/admin_puml"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="@color/cardview_light_background"
+                        app:cardCornerRadius="10dp"
+                        android:layout_margin="5dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_margin="5dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:padding="10dp"
+                                android:textColor="@color/triada2"
+                                android:textSize="60sp"
+                                android:gravity="center"
+                                android:text="@string/fa_puzzle_uml"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:textColor="@color/triada3"
+                                android:textSize="25sp"
+                                android:gravity="center"
+                                android:text="@string/puzzleUML"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+                </TableRow>
+                <TableRow >
+                    <android.support.v7.widget.CardView
 
+                        android:id="@+id/admin_graficas"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_margin="5dp"
+                        app:cardBackgroundColor="@color/cardview_light_background"
+                        app:cardCornerRadius="10dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            <TextView
+                                android:padding="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/fa_graficas"
+                                android:textColor="@color/triada2"
+                                android:textSize="60sp" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/graficas"
+                                android:textColor="@color/triada3"
+                                android:textSize="25sp" />
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/admin_reportes"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="@color/cardview_light_background"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="@string/fa_reportes"
+                                android:textColor="@color/triada2"
+                                android:textSize="60sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/reportes"
+                                android:textColor="@color/triada3"
+                                android:textSize="25sp" />
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+                </TableRow>
+            </TableLayout>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

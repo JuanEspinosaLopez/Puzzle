@@ -6,6 +6,8 @@
 
     <color name="black_overlay">#66000000</color>
     <color name="fondoInicioSesion">#FFFFFF</color>
+    <color name="blanco">#FFFFFF</color>
+
 
     <color name="triada1">#FFE65D</color>
     <color name="triada2">#6AC3FF</color>
