@@ -36,7 +36,7 @@
     {
 		$("#titulo").html(Android.getTitulo());
 		$("#salida").html(Android.getSalida());
-		var jsonLista=JSON.parse((Android.getPuzzle()));
+		var jsonLista=JSON.parse((Android.createPuzzle()));
 		for (item in jsonLista)
 		{
 			document.getElementById("puzzle").innerHTML += "<li id='"+item+"'> <a href='javascript:void(0)'> "+jsonLista[item]+"</a> </li>";
