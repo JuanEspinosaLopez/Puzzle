@@ -3,17 +3,18 @@ package puzzle.dotjar.com.puzzle.PuzzleOrdenamiento;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.webkit.JavascriptInterface;
-
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import java.util.HashMap;
+import java.util.Map;
 
 import puzzle.dotjar.com.puzzle.Database;
 import puzzle.dotjar.com.puzzle.Red;
@@ -33,12 +34,13 @@ public class Comunicador
         this.sqLiteDatabase=database.getReadableDatabase();
         this.puzzle =new JSONObject();
     }
-    
+
     @JavascriptInterface
     public String createPuzzle()
     {
+        final boolean[] yaTermino = {false};
         RequestQueue requestQueue= Volley.newRequestQueue(this.contexto);
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, Red.DIRECCION_IP + "/", new Response.Listener<String>()
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, Red.DIRECCION_IP + "/plaython/webservices.php", new Response.Listener<String>()
         {
             @Override
             public void onResponse(String response)
@@ -47,7 +49,11 @@ public class Comunicador
                 {
                     JSONArray jsonArray=new JSONArray(response);
                     for(int i=0; i<jsonArray.length(); i++)
-                        agregarLinea(i, jsonArray.getString(i));
+                    {
+                        String x = agregarLinea(i, jsonArray.getJSONArray(i).getString(1));
+                    }
+                    yaTermino[0] =true;
+
                 }
                 catch (JSONException e)
                 {
@@ -62,44 +68,113 @@ public class Comunicador
             {
                 error.printStackTrace();
             }
-        });
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> parametros=new HashMap<>();
+                parametros.put("action","puzzleOrdenamiento");
+                parametros.put("numeroNivel", String.valueOf(numeroNivel));
+                return parametros;
+            }
+        };
         requestQueue.add(stringRequest);
+        while(!yaTermino[0])
+        {
 
+        }
         return getPuzzle();
     }
     @JavascriptInterface
     public String getTitulo()
     {
-        //TODO: Usar el objeto SqliteDatabase para acceder al titulo del puzzle con ID: this.numeroNivel
-        return "Puzzle de ordenamiento numero 2";
+        final boolean[] yaTermino = {false};
+        final String[] salida = {""};
+        RequestQueue requestQueue= Volley.newRequestQueue(this.contexto);
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, Red.DIRECCION_IP + "/plaython/webservices.php", new Response.Listener<String>()
+        {
+            @Override
+            public void onResponse(String response)
+            {
+
+                salida[0] =response;
+                yaTermino[0] =true;
+            }
+        }, new Response.ErrorListener()
+        {
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                error.printStackTrace();
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> parametros=new HashMap<>();
+                parametros.put("action","puzzleOrdenamientoTitulo");
+                parametros.put("numeroNivel", String.valueOf(numeroNivel));
+                return parametros;
+            }
+        };
+        requestQueue.add(stringRequest);
+        while(!yaTermino[0])
+        {
+
+        }
+        return salida[0];
     }
     @JavascriptInterface
     public String getSalida()
     {
-        //TODO: Usar el objeto SqliteDatabase para acceder a la salida del puzzle con ID: this.numeroNivel
-        return  "<p>1</p>\n" +
-                "<p>2</p>\n" +
-                "<p>3</p>\n" +
-                "<p>4</p>\n" +
-                "<p>5</p>";
+        final boolean[] yaTermino = {false};
+        final String[] salida = {""};
+        RequestQueue requestQueue= Volley.newRequestQueue(this.contexto);
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, Red.DIRECCION_IP + "/plaython/webservices.php", new Response.Listener<String>()
+        {
+            @Override
+            public void onResponse(String response)
+            {
+                salida[0] =response;
+                yaTermino[0] =true;
+            }
+        }, new Response.ErrorListener()
+        {
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                error.printStackTrace();
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> parametros=new HashMap<>();
+                parametros.put("action","puzzleOrdenamientoSalida");
+                parametros.put("numeroNivel", String.valueOf(numeroNivel));
+                return parametros;
+            }
+        };
+        requestQueue.add(stringRequest);
+        while(!yaTermino[0])
+        {
+
+        }
+        return salida[0];
     }
 
-    public void limpiarPuzzle()
-    {
-        this.puzzle=new JSONObject();
-    }
-    public int agregarLinea(int lugar, String linea)
+    public String agregarLinea(int lugar, String linea)
     {
         try
         {
-            this.puzzle.put("set_Name"+lugar, linea);
-            return 1;
+            return this.puzzle.put("set_Name"+lugar, linea).toString();
+
         }
         catch (JSONException e)
         {
             e.printStackTrace();
         }
-        return 0;
+        return "nada";
     }
     public String getPuzzle()
     {

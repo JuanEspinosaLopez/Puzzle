@@ -30,7 +30,7 @@ public class PuzzleOrdenamiento extends AppCompatActivity
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webView.setWebViewClient(new Callback());
-        webView.addJavascriptInterface(new Comunicador(this, 0), "Android");
+        webView.addJavascriptInterface(new Comunicador(this, 2), "Android");
         webView.loadUrl("file:///android_res/raw/puzzle_ordenamiento.html");
 
     }
