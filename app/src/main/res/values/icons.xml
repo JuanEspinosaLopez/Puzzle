@@ -8,4 +8,7 @@
     <string name="fa_puzzle_uml">&#xf542;</string>
     <string name="fa_graficas">&#xf543;</string>
     <string name="fa_reportes">&#xf544;</string>
+    <string name="fa_trofeo">&#xf091;</string>
+    <string name="fa_gamepad">&#xf11b;</string>
+    <string name="fa_engrane">&#xf085;</string>
 </resources>

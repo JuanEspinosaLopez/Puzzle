@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background_menu_principal"
+    android:gravity="bottom|center"
+    tools:context=".MenuPrincipal">
+
+    <FrameLayout
+        android:layout_weight="11"
+        android:id="@+id/contenedor_principal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
+    <Button
+        android:onClick="regresarFragment"
+        android:id="@+id/menu_principal_back"
+        android:layout_weight="1"
+        android:textColor="@color/blanco"
+        android:text="@string/regresar"
+        android:background="@drawable/btn_menu_principal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

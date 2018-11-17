@@ -13,4 +13,7 @@
     <string name="graficas">Graficas</string>
     <string name="alta_tema_titulo">Ingrese el contenido del tema</string>
     <string name="alta_tema_registrar_tema">Registrar tema</string>
+
+    <string name="title_activity_menu_principal">Plaython</string>
+    <string name="regresar">Regresar</string>
 </resources>

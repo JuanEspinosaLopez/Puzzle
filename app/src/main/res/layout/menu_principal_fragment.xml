@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:id="@+id/menu_principal_fragment"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="45dp"
+    android:layout_marginVertical="60dp"
+
+    android:fitsSystemWindows="true">
+
+    <Button
+        android:id="@+id/verPuzzles"
+        android:gravity="center"
+        android:textSize="50sp"
+        android:text="@string/fa_gamepad"
+        android:textColor="@color/blanco"
+        android:background="@drawable/btn_menu_principal"
+        android:layout_weight="1"
+        android:layout_marginVertical="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <Button
+        android:id="@+id/verEstadisticas"
+        android:gravity="center"
+        android:textSize="50sp"
+        android:text="@string/fa_trofeo"
+        android:textColor="@color/blanco"
+        android:background="@drawable/btn_menu_principal"
+        android:layout_weight="1"
+        android:layout_marginVertical="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <Button
+        android:id="@+id/verAjustes"
+        android:gravity="center"
+        android:textSize="50sp"
+        android:text="@string/fa_engrane"
+        android:textColor="@color/blanco"
+        android:background="@drawable/btn_menu_principal"
+        android:layout_weight="1"
+        android:layout_marginVertical="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

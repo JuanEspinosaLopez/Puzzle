@@ -15,6 +15,17 @@
     <color name="triada4">#55E864</color>
     <color name="triada5">#B855E8</color>
 
+    <color name="triada6">#7B78B2</color>
+    <color name="triada7">#FFEEE4</color>
+    <color name="triada8">#C8C4FF</color>
+    <color name="triada9">#93CC89</color>
+    <color name="triada10">#88B281</color>
+
+    <color name="tonoazul1">#405779</color>
+    <color name="tonoazul2">#CEE0FA</color>
+    <color name="tonoazul3">#83B2F9</color>
+    <color name="tonoazul4">#646D79</color>
+    <color name="tonoazul5">#688EC6</color>
 
 
 </resources>
