@@ -33,7 +33,7 @@ public class MenuPrincipal extends AppCompatActivity
         contenedor=findViewById(R.id.contenedor_principal);
         btnRegresar=findViewById(R.id.menu_principal_back);
         fragmentLinkedList=new LinkedList<>();
-        //btnRegresar.setVisibility(View.INVISIBLE);
+        btnRegresar.setVisibility(View.INVISIBLE);
         cambiarFragment(new Menu());
     }
     void cambiarFragment(Fragment fragment)
@@ -51,17 +51,36 @@ public class MenuPrincipal extends AppCompatActivity
         Animation animation= new AlphaAnimation(1, 0);
         animation.setDuration(600);
         animation.setFillAfter(true);
+        animation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation)
+            {
+                if(fragmentLinkedList.size()>1)
+                {
+                    fragmentLinkedList.pop();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.contenedor_principal, fragmentLinkedList.getLast()).commit();
+                }
+                if(fragmentLinkedList.size()<=1)
+                    btnRegresar.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        contenedor.setAnimation(animation);
+        animation=new AlphaAnimation(0, 1);
+        animation.setDuration(600);
+        animation.setFillAfter(true);
         contenedor.setAnimation(animation);
 
 
-
-        if(fragmentLinkedList.size()>1)
-        {
-            fragmentLinkedList.pop();
-            getSupportFragmentManager().beginTransaction().replace(R.id.contenedor_principal, fragmentLinkedList.getLast()).commit();
-        }
-        if(fragmentLinkedList.size()<=1)
-            btnRegresar.setVisibility(View.INVISIBLE);
 
     }
 
