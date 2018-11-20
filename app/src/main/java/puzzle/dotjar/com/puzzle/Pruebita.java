@@ -11,5 +11,6 @@ public class Pruebita
     String holita=hola;
     //ESTO ES UNA PRUEBITA DE LALEIT
 
+    String holsa="";
 
 }
