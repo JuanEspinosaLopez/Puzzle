@@ -8,7 +8,7 @@ public class Pruebita
 
     //hola
     String hola="hola";
-
+    String holita=hola;
     //ESTO ES UNA PRUEBITA DE LALEIT
 
 
