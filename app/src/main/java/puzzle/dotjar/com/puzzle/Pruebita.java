@@ -11,5 +11,6 @@ public class Pruebita
 
     //ESTO ES UNA PRUEBITA DE LALEIT
 
+    String holsa="";
 
 }
