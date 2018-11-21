@@ -11,4 +11,8 @@
     <string name="fa_trofeo">&#xf091;</string>
     <string name="fa_gamepad">&#xf11b;</string>
     <string name="fa_engrane">&#xf085;</string>
+    <string name="fa_configuracion_usuario">&#xf4fe;</string>
+    <string name="fa_actualizaciones">&#xf381;</string>
+    <string name="fa_actualizaciones2">&#xf019;</string>
+    <string name="fa_licencias">&#xf658;</string>
 </resources>

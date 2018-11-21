@@ -29,31 +29,29 @@ public class Menu extends Fragment
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Typeface iconFont = AdministradorFuentes.getTypeface(getContext(), AdministradorFuentes.FONTAWESOME);
-        AdministradorFuentes.markAsIconContainer(getActivity().findViewById(R.id.menu_principal_fragment), iconFont);
+        MenuPrincipal menuPrincipal=(MenuPrincipal)getActivity();
+        menuPrincipal.aplicarFontAwesome(R.id.menu_principal_fragment);
 
-
+        //accion de botones
         Button verPuzzles=getActivity().findViewById(R.id.verPuzzles);
         Button verEstadisticas=getActivity().findViewById(R.id.verEstadisticas);
         Button verAjustes=getActivity().findViewById(R.id.verAjustes);
-        Animation animation=obtenerAnimacion(-.5f, .5f);
+
+        verAjustes.setOnClickListener(new ButtonClick(new Ajustes()));
+
+
+        //animar
+
+        Animation animation=menuPrincipal.obtenerAnimacion(-.5f, .5f);
 
         verPuzzles.setAnimation(animation);
         verAjustes.setAnimation(animation);
 
-        animation=obtenerAnimacion(.5f, -.5f);
+        animation=menuPrincipal.obtenerAnimacion(.5f, -.5f);
         verEstadisticas.setAnimation(animation);
 
     }
-    Animation obtenerAnimacion(float fromDegrees, float toDegrees)
-    {
-        Animation an = new RotateAnimation(fromDegrees, toDegrees, RotateAnimation.RELATIVE_TO_PARENT, .5f , RotateAnimation.RELATIVE_TO_PARENT, .5f );
-        an.setDuration(600);
-        an.setRepeatCount(-1);
-        an.setRepeatMode(Animation.REVERSE);
-        an.setFillAfter(true);
-        return an;
-    }
+
 
     class ButtonClick implements View.OnClickListener
     {
