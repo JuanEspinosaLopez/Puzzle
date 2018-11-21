@@ -75,6 +75,7 @@ public class Ajustes extends Fragment
                     FirebaseFirestore database=FirebaseFirestore.getInstance();
 
                     SQLiteDatabase sqLiteDatabase=helper.getWritableDatabase();
+                    //TODO: cambiar la version
                     deleteTablas(sqLiteDatabase, new String[]{"tema","subtema", "puzzleRecepcion", "instruccion_pr", "articulo"});
                     obtenerTemas(database);
                     obtenerSubTemas(database);
@@ -107,7 +108,7 @@ public class Ajustes extends Fragment
                                     contentValues.put("idTema", idTema);
                                     contentValues.put("tituloTema", tema.get("tituloTema").toString());
                                     contentValues.put("complejidad", Integer.parseInt(tema.get("complejidadTema").toString()));
-
+                                    sqLiteDatabase.insert("tema", null, contentValues);
                                 }
                             }
                         }
@@ -139,6 +140,7 @@ public class Ajustes extends Fragment
 
                                     contentValues.put("idTema", idTema);
                                     contentValues.put("titulo", subtema.get("tituloSubtema").toString());
+                                    sqLiteDatabase.insert("subtema", null, contentValues);
 
                                 }
                             }
@@ -175,6 +177,7 @@ public class Ajustes extends Fragment
                                     contentValues.put("salidaPR", puzzle.get("salidaPR").toString());
                                     contentValues.put("tituloPR", puzzle.get("tituloPR").toString());
 
+                                    sqLiteDatabase.insert("puzzleRecepcion", null, contentValues);
                                 }
                             }
                         }
