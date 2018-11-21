@@ -16,4 +16,12 @@
 
     <string name="title_activity_menu_principal">Plaython</string>
     <string name="regresar">Regresar</string>
+
+
+
+    <string name="buscar_actualizaciones">¿Buscar actualizaciones?</string>
+    <string name="mensaje_dialogo_actualizaciones">¿Realmente quieres buscar actualizaciones?</string>
+
+    <string name="confirmacion">Si</string>
+    <string name="negacion">No</string>
 </resources>

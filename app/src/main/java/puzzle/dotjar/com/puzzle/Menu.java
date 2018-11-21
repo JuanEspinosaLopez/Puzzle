@@ -38,7 +38,7 @@ public class Menu extends Fragment
         Button verAjustes=getActivity().findViewById(R.id.verAjustes);
 
         verAjustes.setOnClickListener(new ButtonClick(new Ajustes()));
-
+        verPuzzles.setOnClickListener(new ButtonClick(new ListaPuzzle()));
 
         //animar
 

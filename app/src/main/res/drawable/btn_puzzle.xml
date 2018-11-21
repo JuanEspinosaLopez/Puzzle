@@ -3,7 +3,7 @@
     <corners android:topRightRadius="20dp" android:topLeftRadius="20dp">
 
     </corners>
-    <gradient android:startColor="@color/triada3" android:endColor="@color/triada10" android:angle="90" >
+    <gradient android:startColor="@color/triada2" android:endColor="@color/triada10" android:angle="90" >
 
     </gradient>
     <stroke android:color="@color/blanco" android:width="6dp" >
