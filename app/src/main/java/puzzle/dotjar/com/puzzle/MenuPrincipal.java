@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit;
 public class MenuPrincipal extends AppCompatActivity
 {
     FrameLayout contenedor;
-    Button btnRegresar;
+
     FirebaseAuth firebaseAuth;
 
     @Override
@@ -43,9 +43,9 @@ public class MenuPrincipal extends AppCompatActivity
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseAuth.signInWithEmailAndPassword("pablito@mail.com", "123456");
         contenedor=findViewById(R.id.contenedor_principal);
-        btnRegresar=findViewById(R.id.menu_principal_back);
 
-        btnRegresar.setVisibility(View.INVISIBLE);
+
+
         FragmentManager fragmentManager=getSupportFragmentManager();
         fragmentManager.beginTransaction().add(R.id.contenedor_principal, new Menu()).commit();
     }
