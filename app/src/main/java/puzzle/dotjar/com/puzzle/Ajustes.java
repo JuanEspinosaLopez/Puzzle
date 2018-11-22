@@ -2,9 +2,11 @@ package puzzle.dotjar.com.puzzle;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -23,9 +25,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.Map;
-
-import puzzle.dotjar.com.puzzle.Tablas.Puzzle;
-import puzzle.dotjar.com.puzzle.Tablas.Subtema;
 
 public class Ajustes extends Fragment
 {
@@ -75,17 +74,73 @@ public class Ajustes extends Fragment
                     FirebaseFirestore database=FirebaseFirestore.getInstance();
 
                     SQLiteDatabase sqLiteDatabase=helper.getWritableDatabase();
-                    //TODO: cambiar la version
                     deleteTablas(sqLiteDatabase, new String[]{"tema","subtema", "puzzleRecepcion", "instruccion_pr", "articulo"});
-                    obtenerTemas(database);
-                    obtenerSubTemas(database);
-                    obtenerPuzzleRecepcion(database);
+                    new Sincronizacion().execute(database);
+
                 }
             });
             builder.setNegativeButton(getResources().getString(R.string.negacion), null);
             dialog=builder.create();
             dialog.show();
         }
+
+
+        private void deleteTablas(SQLiteDatabase database, String[] tablas)
+        {
+            for(String tabla: tablas)
+            database.delete(tabla, null, null);
+        }
+
+    }
+    private class Sincronizacion extends AsyncTask<FirebaseFirestore, Integer, Integer>
+    {
+        ProgressDialog progressDialog;
+        Sincronizacion ()
+        {
+            this.progressDialog=new ProgressDialog(getContext());
+        }
+
+        @Override
+        protected void onPreExecute()
+        {
+            super.onPreExecute();
+
+            progressDialog.setTitle(getResources().getString(R.string.descargando));
+            progressDialog.setMessage(getResources().getString(R.string.sePaciente));
+            progressDialog.show();
+            progressDialog.setMax(100);
+
+        }
+
+        @Override
+        protected Integer doInBackground(FirebaseFirestore... firebaseFirestores) {
+
+            FirebaseFirestore database=firebaseFirestores[0];
+
+            obtenerTemas(database);
+
+            obtenerSubTemas(database);
+
+            obtenerPuzzleRecepcion(database);
+
+            obtenerArticulos(database);
+
+            return 1;
+
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values)
+        {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(Integer firebaseFirestore) {
+            super.onPostExecute(firebaseFirestore);
+
+        }
+
         private void obtenerTemas(FirebaseFirestore database)
         {
             database.collection("tema")
@@ -129,15 +184,12 @@ public class Ajustes extends Fragment
                                 Map<String, Object> subtema;
                                 for(DocumentSnapshot document: task.getResult())
                                 {
-
-
                                     idSubtema=document.getId();
                                     subtema=document.getData();
                                     ContentValues contentValues=new ContentValues();
                                     contentValues.put("idSubtema", idSubtema);
                                     DocumentReference reference=(DocumentReference) subtema.get("idTema");
                                     String idTema=reference.getId();
-
                                     contentValues.put("idTema", idTema);
                                     contentValues.put("titulo", subtema.get("tituloSubtema").toString());
                                     sqLiteDatabase.insert("subtema", null, contentValues);
@@ -162,8 +214,6 @@ public class Ajustes extends Fragment
                                 Map<String, Object> puzzle;
                                 for(DocumentSnapshot document: task.getResult())
                                 {
-
-
                                     idPuzzleRecepcion=document.getId();
                                     puzzle=document.getData();
 
@@ -183,13 +233,40 @@ public class Ajustes extends Fragment
                         }
                     });
         }
-        private void deleteTablas(SQLiteDatabase database, String[] tablas)
+        private void obtenerArticulos(FirebaseFirestore database)
         {
-            for(String tabla: tablas)
-            database.delete(tabla, null, null);
+            database.collection("articulo")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task)
+                        {
+                            if(task.isSuccessful())
+                            {
+                                SQLiteDatabase sqLiteDatabase=helper.getWritableDatabase();
+                                String idArticulo;
+                                Map<String, Object> puzzle;
+                                for(DocumentSnapshot document: task.getResult())
+                                {
+                                    idArticulo=document.getId();
+                                    puzzle=document.getData();
+
+                                    ContentValues contentValues=new ContentValues();
+                                    contentValues.put("idArticulo", idArticulo);
+                                    DocumentReference reference= (DocumentReference) puzzle.get("idSubtema");
+
+                                    String idSubtema=reference.getId();
+
+                                    contentValues.put("idSubtema", idSubtema);
+                                    contentValues.put("tituloArticulo", puzzle.get("tituloArticulo").toString());
+                                    contentValues.put("urlArticulo", puzzle.get("urlArticulo").toString());
 
 
+                                }
+                                progressDialog.dismiss();
+                            }
+                        }
+                    });
         }
-
     }
 }

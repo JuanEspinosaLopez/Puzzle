@@ -24,4 +24,6 @@
 
     <string name="confirmacion">Si</string>
     <string name="negacion">No</string>
+    <string name="descargando">Descargando...</string>
+    <string name="sePaciente">Se paciente, esto puede tardar unos segundos...</string>
 </resources>
