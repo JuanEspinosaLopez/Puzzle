@@ -1,8 +1,11 @@
 package puzzle.dotjar.com.puzzle.PuzzleOrdenamiento;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.webkit.JavascriptInterface;
+import android.widget.Toast;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,27 +21,36 @@ import java.util.Map;
 
 import puzzle.dotjar.com.puzzle.Database;
 import puzzle.dotjar.com.puzzle.Red;
+import puzzle.dotjar.com.puzzle.SQLiteHelper;
 
 public class Comunicador
 {
     private Context contexto;
-    private int numeroNivel;
+
     private SQLiteDatabase sqLiteDatabase;
-    private Database database;
-    private JSONObject puzzle;
-    Comunicador(Context contexto, int numeroNivel)
+    private SQLiteHelper database;
+    private String numeroNivel;
+    private String tituloPR, salidaPR, puzzle;
+
+    Comunicador(Context contexto, String numeroNivel, String tituloPR, String salidaPR)
     {
         this.contexto = contexto;
         this.numeroNivel=numeroNivel;
-        this.database= new Database(contexto, "puzzle", null, 1);
+        this.tituloPR=tituloPR;
+        this.salidaPR=salidaPR;
+        this.database= new SQLiteHelper(contexto, "plaython.db", null, 1);
         this.sqLiteDatabase=database.getReadableDatabase();
-        this.puzzle =new JSONObject();
+        Cursor c=sqLiteDatabase.rawQuery("SELECT * FROM instruccion_pr WHERE idPuzzleRecepcion = '"+numeroNivel+"'", null);
+        if(c.moveToFirst())
+            this.puzzle=c.getString(0);
+
     }
 
     @JavascriptInterface
     public String createPuzzle()
     {
-        final boolean[] yaTermino = {false};
+
+        /*        final boolean[] yaTermino = {false};
         RequestQueue requestQueue= Volley.newRequestQueue(this.contexto);
         StringRequest stringRequest=new StringRequest(Request.Method.POST, Red.DIRECCION_IP + "/plaython/webservices.php", new Response.Listener<String>()
         {
@@ -82,13 +94,15 @@ public class Comunicador
         while(!yaTermino[0])
         {
 
-        }
+        }*/
+
         return getPuzzle();
     }
     @JavascriptInterface
     public String getTitulo()
     {
-        final boolean[] yaTermino = {false};
+        return this.tituloPR;
+        /*final boolean[] yaTermino = {false};
         final String[] salida = {""};
         RequestQueue requestQueue= Volley.newRequestQueue(this.contexto);
         StringRequest stringRequest=new StringRequest(Request.Method.POST, Red.DIRECCION_IP + "/plaython/webservices.php", new Response.Listener<String>()
@@ -122,12 +136,13 @@ public class Comunicador
         {
 
         }
-        return salida[0];
+        return salida[0];*/
     }
     @JavascriptInterface
     public String getSalida()
     {
-        final boolean[] yaTermino = {false};
+        return this.salidaPR;
+        /*final boolean[] yaTermino = {false};
         final String[] salida = {""};
         RequestQueue requestQueue= Volley.newRequestQueue(this.contexto);
         StringRequest stringRequest=new StringRequest(Request.Method.POST, Red.DIRECCION_IP + "/plaython/webservices.php", new Response.Listener<String>()
@@ -160,12 +175,12 @@ public class Comunicador
         {
 
         }
-        return salida[0];
+        return salida[0];*/
     }
 
     public String agregarLinea(int lugar, String linea)
     {
-        try
+        /*try
         {
             return this.puzzle.put("set_Name"+lugar, linea).toString();
 
@@ -174,10 +189,11 @@ public class Comunicador
         {
             e.printStackTrace();
         }
-        return "nada";
+        return "nada";*/
+        return null;
     }
     public String getPuzzle()
     {
-        return puzzle.toString();
+        return this.puzzle;
     }
 }

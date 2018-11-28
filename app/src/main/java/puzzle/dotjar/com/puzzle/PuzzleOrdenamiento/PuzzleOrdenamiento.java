@@ -1,5 +1,6 @@
 package puzzle.dotjar.com.puzzle.PuzzleOrdenamiento;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +21,8 @@ public class PuzzleOrdenamiento extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        Intent intent=getIntent();
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -30,7 +33,7 @@ public class PuzzleOrdenamiento extends AppCompatActivity
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webView.setWebViewClient(new Callback());
-        webView.addJavascriptInterface(new Comunicador(this, 2), "Android");
+        webView.addJavascriptInterface(new Comunicador(this, intent.getStringExtra("idPuzzleRecepcion"), intent.getStringExtra("tituloPR"), intent.getStringExtra("salidaPR")), "Android");
         webView.loadUrl("file:///android_res/raw/puzzle_ordenamiento.html");
 
     }

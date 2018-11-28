@@ -1,5 +1,5 @@
 .menu-box {
-  border: 1px solid #a1a1a1;
+  border: 1px solid #FFD200;
   margin: 10px;
   padding: 10px;
 }
@@ -18,21 +18,35 @@
   background: #fff;
   display: block;
   font-size: 14px;
-  color: black;
+  font-family: arial;
+  font-style: normal;
+  font-weight: 600;
   text-decoration: none;
   padding: 10px;
 }
+
 .menu-box ul.menu-list > li a:hover {
+  color: #FFD12B;
   cursor: move;
 }
 .menu-box ul.menu-list ul {
   margin-left: 20px;
   margin-top: 5px;
 }
-.menu-box ul.menu-list ul li a {
-  color: black;
+.menu-box ul.menu-list ul li a:hover {
+  color: #FFD12B;
 }
 .menu-box li.menu-highlight {
   border: 1px dashed blue !important;
   background: #f5f5f5;
+}
+
+.col-xs-9{
+	color: #0070A6;
+  font-family: verdana;
+  font-style: normal;
+}
+
+.col-xs-3 button{
+  font-size: 15px;
 }

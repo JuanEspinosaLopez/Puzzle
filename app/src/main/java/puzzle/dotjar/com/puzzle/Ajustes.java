@@ -122,6 +122,7 @@ public class Ajustes extends Fragment
             obtenerSubTemas(database);
 
             obtenerPuzzleRecepcion(database);
+            obtenerPuzzleRecepcion_json(database);
 
             obtenerArticulos(database);
 
@@ -228,6 +229,39 @@ public class Ajustes extends Fragment
                                     contentValues.put("tituloPR", puzzle.get("tituloPR").toString());
 
                                     sqLiteDatabase.insert("puzzleRecepcion", null, contentValues);
+                                }
+                            }
+                        }
+                    });
+        }
+        private void obtenerPuzzleRecepcion_json(FirebaseFirestore database)
+        {
+            database.collection("instruccion_pr")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task)
+                        {
+                            if(task.isSuccessful())
+                            {
+                                SQLiteDatabase sqLiteDatabase=helper.getWritableDatabase();
+                                String idInstruccionPr;
+
+                                Map<String, Object> puzzle;
+                                for(DocumentSnapshot document: task.getResult())
+                                {
+                                    idInstruccionPr=document.getId();
+                                    puzzle=document.getData();
+
+                                    ContentValues contentValues=new ContentValues();
+
+                                    DocumentReference reference= (DocumentReference) puzzle.get("idPuzzleRecepcion");
+                                    String idPuzzleRecepcion=reference.getId();
+
+                                    contentValues.put("idInstruccionPr", idInstruccionPr);
+                                    contentValues.put("puzzle", puzzle.get("puzzle").toString());
+                                    contentValues.put("idPuzzleRecepcion", idPuzzleRecepcion);
+
                                 }
                             }
                         }

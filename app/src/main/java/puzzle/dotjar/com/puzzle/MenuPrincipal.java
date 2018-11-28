@@ -87,6 +87,11 @@ public class MenuPrincipal extends AppCompatActivity
         Typeface iconFont = AdministradorFuentes.getTypeface(this, AdministradorFuentes.FONTAWESOME);
         AdministradorFuentes.markAsIconContainer(findViewById(id), iconFont);
     }
+    void aplicarFontAwesome(View v)
+    {
+        Typeface iconFont = AdministradorFuentes.getTypeface(this, AdministradorFuentes.FONTAWESOME);
+        AdministradorFuentes.markAsIconContainer(v, iconFont);
+    }
     Animation obtenerAnimacion(float fromDegrees, float toDegrees)
     {
         Animation an = new RotateAnimation(fromDegrees, toDegrees, RotateAnimation.RELATIVE_TO_PARENT, .5f , RotateAnimation.RELATIVE_TO_PARENT, .5f );

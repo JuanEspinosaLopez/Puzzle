@@ -37,10 +37,9 @@
 		$("#titulo").html(Android.getTitulo());
 		$("#salida").html(Android.getSalida());
 		var jsonLista=JSON.parse((Android.createPuzzle()));
-		for (item in jsonLista)
-		{
-			document.getElementById("puzzle").innerHTML += "<li id='"+item+"'> <a href='javascript:void(0)'> "+jsonLista[item]+"</a> </li>";
-		}
+		jsonLista=JSON.parse("{ 	 \"puzzle\":  	{ 		\"linea_1\": 		{ 			\"contenido\": \"print ('1')\", 			\"identacion\": \"0\" 		}, 		\"linea_2\": 		{ 			\"contenido\": \"print ('2')\", 			\"identacion\": \"0\" 		}, 		\"linea_3\": 		{ 			\"contenido\": \"print ('3')\", 			\"identacion\": \"0\" 		} 	} }");
+		for(i=1; i<=Object.keys(jsonLista.puzzle).length; i++)
+			document.getElementById("puzzle").innerHTML += "<li id='set_Item"+i+"'> <a href='javascript:void(0)'> "+jsonLista.puzzle['linea_'+i].contenido+"</a> </li>";
         puzzle= $('#puzzle').nestedSortable(
             {
                 forcePlaceholderSize: true,
