@@ -40,9 +40,10 @@ public class Comunicador
         this.salidaPR=salidaPR;
         this.database= new SQLiteHelper(contexto, "plaython.db", null, 1);
         this.sqLiteDatabase=database.getReadableDatabase();
-        Cursor c=sqLiteDatabase.rawQuery("SELECT * FROM instruccion_pr WHERE idPuzzleRecepcion = '"+numeroNivel+"'", null);
+        Cursor c=sqLiteDatabase.rawQuery("SELECT * FROM instruccion_pr", null);
+        Toast.makeText(contexto, "cuenta: "+c.getCount(), Toast.LENGTH_SHORT).show();
         if(c.moveToFirst())
-            this.puzzle=c.getString(0);
+            this.puzzle=c.getString(1);
 
     }
 

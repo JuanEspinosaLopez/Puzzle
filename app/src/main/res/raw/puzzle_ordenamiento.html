@@ -32,14 +32,20 @@
 		</div>
 		<script>
 	var puzzle;
+	var jsonLista;
     $(document).ready(function ()
     {
 		$("#titulo").html(Android.getTitulo());
 		$("#salida").html(Android.getSalida());
-		var jsonLista=JSON.parse((Android.createPuzzle()));
-		jsonLista=JSON.parse("{ 	 \"puzzle\":  	{ 		\"linea_1\": 		{ 			\"contenido\": \"print ('1')\", 			\"identacion\": \"0\" 		}, 		\"linea_2\": 		{ 			\"contenido\": \"print ('2')\", 			\"identacion\": \"0\" 		}, 		\"linea_3\": 		{ 			\"contenido\": \"print ('3')\", 			\"identacion\": \"0\" 		} 	} }");
+		jsonLista=JSON.parse((Android.createPuzzle()));
 		for(i=1; i<=Object.keys(jsonLista.puzzle).length; i++)
 			document.getElementById("puzzle").innerHTML += "<li id='set_Item"+i+"'> <a href='javascript:void(0)'> "+jsonLista.puzzle['linea_'+i].contenido+"</a> </li>";
+        var ul = document.querySelector('ul');
+        //Randomize
+        for (var i = ul.children.length; i >= 0; i--)
+        {
+            ul.appendChild(ul.children[Math.random() * i | 0]);
+        }
         puzzle= $('#puzzle').nestedSortable(
             {
                 forcePlaceholderSize: true,

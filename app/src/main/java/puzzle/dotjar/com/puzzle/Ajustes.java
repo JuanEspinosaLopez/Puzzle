@@ -116,16 +116,11 @@ public class Ajustes extends Fragment
         protected Integer doInBackground(FirebaseFirestore... firebaseFirestores) {
 
             FirebaseFirestore database=firebaseFirestores[0];
-
             obtenerTemas(database);
-
             obtenerSubTemas(database);
-
             obtenerPuzzleRecepcion(database);
-            obtenerPuzzleRecepcion_json(database);
-
             obtenerArticulos(database);
-
+            obtenerPuzzleRecepcion_json(database);
             return 1;
 
         }
@@ -261,7 +256,7 @@ public class Ajustes extends Fragment
                                     contentValues.put("idInstruccionPr", idInstruccionPr);
                                     contentValues.put("puzzle", puzzle.get("puzzle").toString());
                                     contentValues.put("idPuzzleRecepcion", idPuzzleRecepcion);
-
+                                    sqLiteDatabase.insert("instruccion_pr", null, contentValues);
                                 }
                             }
                         }
