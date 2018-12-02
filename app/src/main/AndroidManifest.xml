@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="puzzle.dotjar.com.puzzle">
 
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -11,25 +14,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PuzzleOrdenamiento.PuzzleOrdenamiento">
 
-        </activity>
-        <activity android:name=".Login" />
-        <activity android:name=".Admin.AdminDashboard">
-        </activity>
-        <activity android:name=".Admin.Temas.Temas" />
-        <activity android:name=".Admin.Temas.AltaTema" />
         <activity
-            android:name=".MenuPrincipal"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_menu_principal"
-            android:theme="@style/FullscreenTheme">
+            android:name=".Login"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".PuzzleOrdenamiento.PuzzleOrdenamiento"/>
+
+        <activity android:name=".Admin.AdminDashboard"/>
+
+        <activity android:name=".Admin.Temas.Temas" />
+
+        <activity android:name=".Admin.Temas.AltaTema" />
+
+        <activity
+            android:name=".MenuPrincipal"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_menu_principal"
+            android:theme="@style/FullscreenTheme">
+        </activity>
+
     </application>
 
 </manifest>

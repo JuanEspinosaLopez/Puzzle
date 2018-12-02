@@ -18,6 +18,7 @@
     <string name="regresar">Regresar</string>
 
 
+    <string name="cerrar_sesion">Cerrar sesión</string>
 
     <string name="buscar_actualizaciones">¿Buscar actualizaciones?</string>
     <string name="mensaje_dialogo_actualizaciones">¿Realmente quieres buscar actualizaciones?</string>
@@ -26,4 +27,5 @@
     <string name="negacion">No</string>
     <string name="descargando">Descargando...</string>
     <string name="sePaciente">Se paciente, esto puede tardar unos segundos...</string>
+
 </resources>
