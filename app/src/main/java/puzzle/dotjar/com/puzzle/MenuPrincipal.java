@@ -1,6 +1,7 @@
 package puzzle.dotjar.com.puzzle;
 
 
+import android.graphics.Interpolator;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
@@ -108,6 +110,17 @@ public class MenuPrincipal extends AppCompatActivity
         an.setRepeatCount(-1);
         an.setRepeatMode(Animation.REVERSE);
         an.setFillAfter(true);
+        return an;
+    }
+    Animation obtenerAnimacion(float fromDegrees, float toDegrees, long duration, long idle)
+    {
+        Animation an = new RotateAnimation(fromDegrees, toDegrees, RotateAnimation.RELATIVE_TO_PARENT, .5f , RotateAnimation.RELATIVE_TO_PARENT, .5f );
+        an.setDuration(duration);
+        an.setRepeatCount(-1);
+        an.setStartOffset(idle);
+        an.setRepeatMode(Animation.REVERSE);
+        an.setFillAfter(true);
+
         return an;
     }
 

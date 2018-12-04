@@ -70,13 +70,14 @@ public class Ajustes extends Fragment
                 @Override
                 public void onClick(DialogInterface dialog, int which)
                 {
-
                     FirebaseFirestore database=FirebaseFirestore.getInstance();
 
-                    SQLiteDatabase sqLiteDatabase=helper.getWritableDatabase();
-                    deleteTablas(sqLiteDatabase, new String[]{"tema","subtema", "puzzleRecepcion", "instruccion_pr", "articulo"});
-                    new Sincronizacion().execute(database);
-
+                    if(database!=null)
+                    {
+                        SQLiteDatabase sqLiteDatabase = helper.getWritableDatabase();
+                        deleteTablas(sqLiteDatabase, new String[]{"tema", "subtema", "puzzleRecepcion", "instruccion_pr", "articulo"});
+                        new Sincronizacion().execute(database);
+                    }
                 }
             });
             builder.setNegativeButton(getResources().getString(R.string.negacion), null);

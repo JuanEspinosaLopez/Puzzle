@@ -11,6 +11,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -45,13 +46,13 @@ public class ListaPuzzle extends Fragment
 
         boolean par=true;
         Cursor cursor=sqLiteDatabase.query("puzzleRecepcion", null, null, null, null, null, null);
-        TableRow.LayoutParams layoutParamsRow=new TableRow.LayoutParams();
-        TableRow.LayoutParams layoutParamsButton=new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, 200);
+        TableLayout.LayoutParams layoutParamsRow=new TableLayout.LayoutParams();
+        TableRow.LayoutParams layoutParamsButton=new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, 350);
 
         layoutParamsButton.weight=1;
         layoutParamsButton.setMargins(5, 0, 5, 0);
+        layoutParamsRow.setMargins(10,20,10,20);
 
-        layoutParamsRow.setMargins(0, 20, 0 ,20);
 
         TableRow tableRow=new TableRow(getContext());
         Button button, button1;
@@ -69,18 +70,22 @@ public class ListaPuzzle extends Fragment
                 button.setTextColor(getResources().getColor(R.color.blanco));
                 button.setText(getResources().getString(R.string.fa_po));
                 button.setOnClickListener(new verPuzzle(cursor.getString(cursor.getColumnIndex("idPuzzleRecepcion")), cursor.getString(cursor.getColumnIndex("tituloPR")), cursor.getString(cursor.getColumnIndex("salidaPR"))));
-                button.setTextSize(20*TypedValue.COMPLEX_UNIT_SP);
+                button.setTextSize(30*TypedValue.COMPLEX_UNIT_SP);
                 button1=new Button(getContext());
                 button1.setLayoutParams(layoutParamsButton);
                 tableRow.addView(button1);
+                Animation animation=menuPrincipal.obtenerAnimacion(.2f, -.2f, 1000);
+                button.setAnimation(animation);
+
                 if(cursor.moveToNext())
                 {
                     button1.setBackground(getResources().getDrawable(R.drawable.btn_puzzle));
                     button1.setText(getResources().getString(R.string.fa_po));
-                    button.setOnClickListener(new verPuzzle(cursor.getString(cursor.getColumnIndex("idPuzzleRecepcion")), cursor.getString(cursor.getColumnIndex("tituloPR")), cursor.getString(cursor.getColumnIndex("salidaPR"))));
+                    button1.setOnClickListener(new verPuzzle(cursor.getString(cursor.getColumnIndex("idPuzzleRecepcion")), cursor.getString(cursor.getColumnIndex("tituloPR")), cursor.getString(cursor.getColumnIndex("salidaPR"))));
                     button1.setTextColor(getResources().getColor(R.color.blanco));
-                    button1.setTextSize(20*TypedValue.COMPLEX_UNIT_SP);
-
+                    button1.setTextSize(30*TypedValue.COMPLEX_UNIT_SP);
+                    animation=menuPrincipal.obtenerAnimacion(.2f, -.2f, 1000);
+                    button1.setAnimation(animation);
                 }
                 else
                     button1.setVisibility(View.INVISIBLE);
@@ -93,7 +98,7 @@ public class ListaPuzzle extends Fragment
             finally
             {
                 menuPrincipal.aplicarFontAwesome(tableRow);
-                tableLayout.addView(tableRow);
+                tableLayout.addView(tableRow,0);
             }
         }
 
@@ -104,6 +109,7 @@ public class ListaPuzzle extends Fragment
 
         public verPuzzle(String idPuzzleRecepcion, String tituloPr, String salidaPr)
         {
+
             this.idPuzzleRecepcion = idPuzzleRecepcion;
             this.tituloPr = tituloPr;
             this.salidaPr = salidaPr;

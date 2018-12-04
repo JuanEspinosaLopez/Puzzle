@@ -13,11 +13,7 @@ public class SQLiteHelper extends SQLiteOpenHelper
                             "CREATE TABLE IF NOT EXISTS instruccion_pr(idInstruccionPr TEXT PRIMARY KEY, puzzle TEXT NOT NULL, idPuzzleRecepcion TEXT NOT NULL, FOREIGN KEY (idPuzzleRecepcion) REFERENCES puzzleRecepcion(idPuzzleRecepcion) ON DELETE CASCADE ON UPDATE CASCADE); " +
                             "CREATE TABLE IF NOT EXISTS articulo(idArticulo TEXT PRIMARY KEY, idSubtema TEXT NOT NULL, tituloArticulo TEXT NOT NULL, urlArticulo TEXT NOT NULL, FOREIGN KEY (idSubtema) REFERENCES subtema(idSubtema) ON DELETE CASCADE ON UPDATE CASCADE );";
 
-/*
-* TABLAS SINCRONIZADAS: Tema, Subtema, puzzleRecepcion, articulo
-* TODO: Definir si la tabla de instruccion se cargará desde firestore o estará precargada
-*
-* */
+
 
     public SQLiteHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version)
     {

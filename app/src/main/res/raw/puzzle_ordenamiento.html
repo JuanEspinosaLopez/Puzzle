@@ -6,11 +6,21 @@
 	<body>
 		<title>Puzzle de ordenamiento</title>
 		<link href="bootstrap.css" rel="stylesheet" type="text/css" >
-		<script src="jquery172.js"></script>
+
+
+
+        <script src="jquery172.js"></script>
 		<script src="jqueryui.js"></script>
 		<script src="jqueryuitouchpunch.js"></script>
 		<script src="jquerymjsnestedsortable.js"></script>
-		<div class="col-xs-12">
+		<script src="skulptmin.js"></script>
+		<script src="skulptstdlib.js"></script>
+        <!--
+		<script src="http://www.skulpt.org/static/skulpt.min.js" type="text/javascript"></script>
+        <script src="http://www.skulpt.org/static/skulpt-stdlib.js" type="text/javascript"></script>
+-->
+
+        <div class="col-xs-12">
 			<div class="row">
 				<div class="col-xs-9">
 					<h4 id="titulo"></h4>
@@ -21,22 +31,32 @@
 				</div>
 				<div class="col-xs-3">
 					<h4>Salida:</h4>
-					<div id="salida">
-					</div>
+					<textarea id="salida" class='form-control' disabled onchange='textAreaAdjust(this)' style="overflow:hidden"></textarea>
 					<button id="serialize" class="btn btn-success form-control">He terminado</button>
 				</div>
 			</div>
 			<div class="row">
 				<pre id="toArrayOutput"></pre>
 			</div>
+			<div class="row">
+				<pre id="toHierarchy"></pre>
+			</div>
+			<div class="row">
+				<pre id="serialize"></pre>
+			</div>
 		</div>
+
 		<script>
+
 	var puzzle;
+	var salida;
 	var jsonLista;
     $(document).ready(function ()
     {
+		salida=Android.getSalida();
 		$("#titulo").html(Android.getTitulo());
-		$("#salida").html(Android.getSalida());
+		$("#salida").html(salida);
+		textAreaAdjust(document.getElementById("salida"));
 		jsonLista=JSON.parse((Android.createPuzzle()));
 		for(i=1; i<=Object.keys(jsonLista.puzzle).length; i++)
 			document.getElementById("puzzle").innerHTML += "<li id='set_Item"+i+"'> <a href='javascript:void(0)'> "+jsonLista.puzzle['linea_'+i].contenido+"</a> </li>";
@@ -77,6 +97,10 @@
             html += '</table>';
 
             $("#toArrayOutput").html(html);
+			toHierarchy=$("#puzzle").nestedSortable('toHierarchy');
+			$("#toHierarchy").html(toHierarchy);
+			$("#serialize").html($("#puzzle").nestedSortable('serialize'));
+			
 
         });
 
@@ -106,6 +130,12 @@
         }
         return dumped_text;
     }
+	function textAreaAdjust(o)
+	{
+		o.style.height = "1px";
+		o.style.height = (25+o.scrollHeight)+"px";
+	}
 </script>
+
 	</body>
 </html>
