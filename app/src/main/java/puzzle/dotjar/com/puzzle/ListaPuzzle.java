@@ -98,7 +98,7 @@ public class ListaPuzzle extends Fragment
             finally
             {
                 menuPrincipal.aplicarFontAwesome(tableRow);
-                tableLayout.addView(tableRow,0);
+                tableLayout.addView(tableRow);
             }
         }
 
@@ -109,7 +109,6 @@ public class ListaPuzzle extends Fragment
 
         public verPuzzle(String idPuzzleRecepcion, String tituloPr, String salidaPr)
         {
-
             this.idPuzzleRecepcion = idPuzzleRecepcion;
             this.tituloPr = tituloPr;
             this.salidaPr = salidaPr;
